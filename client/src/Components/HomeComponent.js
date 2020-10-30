@@ -3,52 +3,65 @@ import { Col, Row, Container } from "reactstrap";
 
 function RenderCard(props) {
     return (
-        <div className="score-details-card">
-            <Row className="college">
-                <Col offset={1} xs={2}>{props.icon}</Col>
-                <Col xs={9}>{props.name}</Col>
-            </Row>
-            <Row className="main-score-details">
-                <Col>
-                    <div className="exams">GRE</div>
-                    <div className="scores">{props.gre_score}</div>
-                </Col>
-                <Col>
-                    <div className="exams">GMAT</div>
-                    <div className="scores">{props.gmat_score}</div>
-                </Col>
-                <Col>
-                    <div className="exams">SAT</div>
-                    <div className="scores">{props.sat_score}</div>
-                </Col>
-            </Row>
+        <Col md={6} xl={4}>
+            <div className="score-details-card">
+                <Row className="college">
+                    <Col offset={1} xs={2}>{props.icon}</Col>
+                    <Col xs={9}>{props.name}</Col>
+                </Row>
+                <Row className="main-score-details">
+                    <Col>
+                        <div className="exams">GRE</div>
+                        <div className="scores">{props.gre_score}</div>
+                    </Col>
+                    <Col>
+                        <div className="exams">GMAT</div>
+                        <div className="scores">{props.gmat_score}</div>
+                    </Col>
+                    <Col>
+                        <div className="exams">SAT</div>
+                        <div className="scores">{props.sat_score}</div>
+                    </Col>
+                </Row>
 
-            <Row className="score-details">
-                <Col xs={9}>
-                    <div className="exams">TOEFL</div>
-                </Col>
-                <Col xs={3}>
-                    <div className="scores">{props.toefl}</div>
-                </Col>
-            </Row>
-            <Row className="score-details">
-                <Col xs={9}>
-                    <div className="exams">IELTS</div>
-                </Col>
-                <Col xs={3}>
-                    <div className="scores">{props.ielts}</div>
-                </Col>
-            </Row>
-            <Row className="score-details">
-                <Col xs={9}>
-                    <div className="exams">GRE Quantitative</div>
-                </Col>
-                <Col xs={3}>
-                    <div className="scores">{props.gre_quant}</div>
-                </Col>
-            </Row>
-        </div>
+                <Row className="score-details">
+                    <Col xs={9}>
+                        <div className="exams">TOEFL</div>
+                    </Col>
+                    <Col xs={3}>
+                        <div className="scores">{props.toefl}</div>
+                    </Col>
+                </Row>
+                <Row className="score-details">
+                    <Col xs={9}>
+                        <div className="exams">IELTS</div>
+                    </Col>
+                    <Col xs={3}>
+                        <div className="scores">{props.ielts}</div>
+                    </Col>
+                </Row>
+                <Row className="score-details">
+                    <Col xs={9}>
+                        <div className="exams">GRE Quantitative</div>
+                    </Col>
+                    <Col xs={3}>
+                        <div className="scores">{props.gre_quant}</div>
+                    </Col>
+                </Row>
+            </div>
+        </Col>
     )
+}
+
+function SearchBar() {
+    return (
+        <div className="search-score">
+            <form>
+                <input type="text" name="search" placeholder="Search"></input>
+            </form>
+            <button className="submit-button">Submit</button>
+        </div>
+    );
 }
 
 class Home extends Component {
@@ -56,6 +69,9 @@ class Home extends Component {
         return (
             <>
                 <h1 className="home-heading">Higher Education Details</h1>
+                <Container>
+                    <SearchBar />
+                </Container>
                 <Container>
                     <Row>
                         <RenderCard
