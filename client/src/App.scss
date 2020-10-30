@@ -161,3 +161,53 @@ a:hover {
   text-decoration: none;
   color: #ffffff;
 }
+
+//Home Component
+.home-heading {
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.score-details-card {
+  text-align: center;
+  width: 20vw;
+  border-radius: 25px;
+  background-color: beige;
+  height: 50vh;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.college {
+  margin: 0px;
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.main-score-details {
+  margin-bottom: 40px;
+}
+
+.scores {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.main-score-details .exams {
+  font-size: 0.8rem;
+}
+
+.score-details .exams {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 0.9;
+}
+
+.score-details .scores {
+  margin-right: 20px;
+}
