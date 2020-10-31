@@ -171,8 +171,10 @@ a:hover {
 
 //Home Component
 .home-heading {
-  text-align: center;
+  text-align: left;
   margin-top: 5vh;
+  font-weight: 800;
+  font-size: 3rem;
 }
 
 .search-score {
@@ -211,11 +213,12 @@ a:hover {
       box-shadow: 2px 2px 10px #49546446;
       transition: box-shadow 0.1s ease-in;
     }
-  
   }
+
   .submit-button:hover {
     box-shadow: 2px 3px 10px #495464a6;
   }
+
   .search-options{
     border-radius: 10px;
     margin-right: 20px;
@@ -226,27 +229,21 @@ a:hover {
     outline: none;
     border: none;
     height: 40px;
-    
-
   }
+
   .select-items{
     border: none;
   }
 }
 
-
-
-
 .score-details-card {
   padding-top: 2vh;
-  padding-bottom: 520px;
   text-align: center;
   width: 20vw;
   border-radius: 25px;
   background-color: #f4f4f2;
   color: #495464;
-  height: 50vh;
-  min-height: 360px;
+  height: fit-content;
   min-width: 250px;
   max-width: 350px;
   margin-right: auto;
@@ -266,8 +263,15 @@ a:hover {
   margin: 0px;
   font-size: 1.2rem;
   font-weight: 500;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 20px;
+}
+
+.college-location {
+  margin: 0px;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 30px;
 }
 
 .main-score-details {
@@ -285,6 +289,7 @@ a:hover {
 
 .score-details {
   margin-bottom: 10px;
+
   .exams {
     text-align: left;
     margin-left: 20px;

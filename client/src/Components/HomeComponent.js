@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Col, Row, Container } from "reactstrap";
 
@@ -8,13 +7,16 @@ function RenderCard(props) {
             <div className="score-details-card">
                 <Row>
                     <Col>
-                        <img className="university-icon" src={props.icon}></img>
+                        <img className="university-icon" src={props.icon} alt="University Logo"></img>
                     </Col>
                 </Row>
                 <Row className="college">
-
                     <Col xs={12}>{props.name}</Col>
                 </Row>
+                <Row className="college-location">
+                    <Col xs={12}>{props.location}</Col>
+                </Row>
+
                 <Row className="main-score-details">
                     <Col>
                         <div className="exams">GRE</div>
@@ -82,9 +84,26 @@ class Home extends Component {
         this.state = {
             search: '',
             universities: [],
-            selected: ''
+            selected: '',
         }
     }
+
+    componentDidMount() {
+        fetch('http://localhost:4000/gettop', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(data => data.json())
+            .then(data => {
+                console.log(data);
+                this.setState({
+                    universities: data
+                });
+            })
+    }
+
     handleChange = (e) => {
         this.setState({
             search: e.target.value
@@ -110,8 +129,7 @@ class Home extends Component {
                         universities: data
                     });
                 })
-        }
-        else if (this.state.selected === 'gre') {
+        } else if (this.state.selected === 'gre') {
             fetch('http://localhost:4000/getgre', {
                 method: 'post',
                 body: JSON.stringify(searchGre),
@@ -124,7 +142,7 @@ class Home extends Component {
                     this.setState({
                         universities: data
                     });
-                })
+                }, () => { console.log(this.state.universities) })
         }
     }
 
@@ -136,6 +154,7 @@ class Home extends Component {
         })
 
     }
+
     render() {
         const Cards = () => {
             return (
@@ -145,6 +164,7 @@ class Home extends Component {
                             key={index}
                             icon={university.logo}
                             name={university.name}
+                            location={university.location}
                             gre_score={university.gre}
                             gmat_score={university.gmat}
                             ielts={university.ielts}
@@ -161,14 +181,16 @@ class Home extends Component {
 
         return (
             <>
-                <h1 className="home-heading">Higher Education Details</h1>
                 <Container>
+                    <h1 className="home-heading">Prepository</h1>
                     <div className="search-score">
                         <form onSubmit={this.handleSubmit}>
                             <input className='select-options' id='university' name='option' type='radio' value='university' onClick={this.handleClick} />
                             <label htmlFor="university">University Name</label>
+
                             <input className='select-options' id='gre' type='radio' name='option' value='gre' onClick={this.handleClick} />
                             <label htmlFor="gre">GRE Score</label>
+
                             <input type="text" name="search" placeholder="Search" onChange={this.handleChange}></input>
                             <button className="submit-button" type='submit' >Submit</button>
                         </form>
