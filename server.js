@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const University = require('./University');
-mongoose.connect('mongodb://localhost/prepository', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://prep:admin@cluster0.qess7.mongodb.net/prepository?retryWrites=true&w=majority', { useNewUrlParser: true });
+
 
 mongoose.connection.once('open', () => {
     console.log("connected to mongodb");
@@ -88,7 +89,11 @@ function escapeRegex(text) {
 };
 
 
-app.listen(4000, () => {
+app.listen(process.env.PORT || 4000, () => {
     console.log('Listening at port 4000');
 });
+
+
+
+
 
